@@ -1,0 +1,21 @@
+services:
+  web:
+    build:
+      context: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+    environment:
+      - DEBUG=True
+
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: jaisiyaram
+      POSTGRES_DB: invoicedb
+    ports:
+      - "5433:5432"
